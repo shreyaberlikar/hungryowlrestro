@@ -1,44 +1,118 @@
-# Smart Restaurant POS
+# 🍽️ Smart Restaurant POS
 
-A full desktop Restaurant Billing System built with **JavaFX**, **SQLite**, and **Apache PDFBox**.
-
-Features: Table management, Order taking, Billing (tax/discount), Inventory with low-stock alerts, Sales Analytics (charts), and PDF Invoice generation.
+> **A desktop-based Restaurant Billing & Management System built using JavaFX, SQLite, and Apache PDFBox for efficient restaurant operations.**
 
 ---
 
-## Running in VS Code
+## 📖 Overview
 
-### 1. Install prerequisites
+Smart Restaurant POS is a comprehensive desktop application designed to simplify restaurant management. It enables restaurants to manage tables, process customer orders, generate bills, monitor inventory, analyze sales, and create professional PDF invoices—all within an intuitive JavaFX interface.
+
+---
+
+## ✨ Features
+
+- 🍽️ Table Management
+- 📝 Order Taking & Management
+- 💳 Billing with Tax & Discount Calculation
+- 📦 Inventory Management with Low-Stock Alerts
+- 📊 Sales Analytics & Charts
+- 📄 PDF Invoice Generation
+- 💻 User-friendly JavaFX Interface
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| **Programming Language** | Java |
+| **Framework** | JavaFX |
+| **Database** | SQLite |
+| **PDF Generation** | Apache PDFBox |
+| **Build Tool** | Maven |
+| **IDE** | VS Code |
+
+---
+
+# 🚀 Running in VS Code
+
+## 1️⃣ Install Prerequisites
+
 - **JDK 17 or later** — https://adoptium.net/
-- **Apache Maven** — https://maven.apache.org/download.cgi (make sure `mvn` works in a terminal)
-- **VS Code extensions:**
-  - "Extension Pack for Java" (Microsoft) — installs Java language support + Maven for Java + Debugger
-  - That's it — no separate JavaFX extension is needed since we use the `javafx-maven-plugin`.
+- **Apache Maven** — https://maven.apache.org/download.cgi *(make sure `mvn` works in a terminal)*
 
-### 2. Open the project
-Open this folder (`smart-restaurant-pos`) in VS Code: **File → Open Folder**.
+### VS Code Extensions
 
-Wait a few seconds for the Java extension to detect the Maven project (watch the bottom status bar / "Java Projects" view in the sidebar).
+- **Extension Pack for Java (Microsoft)**
+  - Java Language Support
+  - Maven for Java
+  - Java Debugger
 
-### 3. Run it
-Open a terminal in VS Code (`` Ctrl+` ``) and run:
+> No separate JavaFX extension is required since the project uses the `javafx-maven-plugin`.
+
+---
+
+## 2️⃣ Open the Project
+
+Open the **smart-restaurant-pos** folder in VS Code.
+
+```
+File → Open Folder
+```
+
+Wait a few seconds for the Java extension to detect the Maven project. You can verify this in:
+
+- Java Projects
+- Maven View
+- Status Bar
+
+---
+
+## 3️⃣ Run the Application
+
+Open the VS Code terminal:
 
 ```bash
 mvn clean javafx:run
 ```
 
-The first run downloads dependencies (JavaFX, SQLite JDBC, PDFBox) — that's normal and only happens once.
+During the first run, Maven automatically downloads:
 
-A window titled **"Smart Restaurant POS"** should open. A `restaurant.db` SQLite file is created automatically in the project folder on first launch, pre-seeded with sample menu items, tables, and inventory so the app looks populated right away.
+- JavaFX
+- SQLite JDBC
+- Apache PDFBox
 
-### Alternative: run via the Maven sidebar
-If you don't want to use the terminal, the Java extension adds a **Maven** view in the sidebar (Explorer). Expand `smart-restaurant-pos → Plugins → javafx → javafx:run` and double-click it.
+A window titled **Smart Restaurant POS** will open.
+
+On the first launch, a **restaurant.db** SQLite database is automatically created and pre-populated with:
+
+- Sample Menu Items
+- Restaurant Tables
+- Inventory Records
 
 ---
 
-## Project Structure
+## ▶️ Alternative: Run Using Maven Sidebar
+
+Instead of using the terminal:
 
 ```
+Explorer
+   └── Maven
+       └── smart-restaurant-pos
+            └── Plugins
+                 └── javafx
+                      └── javafx:run
+```
+
+Double-click **javafx:run**.
+
+---
+
+# 📂 Project Structure
+
+```text
 smart-restaurant-pos/
 ├── pom.xml
 ├── src/main/java/com/restaurant/pos/
@@ -47,23 +121,111 @@ smart-restaurant-pos/
 │   ├── model/                    # MenuItem, RestaurantTable, Order, OrderItem, Bill, InventoryItem
 │   ├── dao/                      # JDBC data access objects (one per table)
 │   ├── service/                  # OrderService, BillingService, InvoiceService (PDF)
-│   └── controller/                # JavaFX controllers, one per screen
+│   └── controller/               # JavaFX controllers, one per screen
 └── src/main/resources/com/restaurant/pos/
     ├── fxml/                     # Screen layouts (dashboard, menu, tables, orders, billing, inventory, analytics)
-    └── css/style.css             # App styling
+    └── css/style.css             # Application styling
 ```
 
-## How to Use It
+---
 
-1. **Tables** — add tables, click a free/reserved table tile to toggle its status.
-2. **Orders** — pick a table from the dropdown (auto-creates an order + marks table occupied), add menu items with quantities, then **Generate Bill**.
-3. **Billing** — see all bills, **Mark Paid** (frees the table) or **Print Invoice (PDF)** to save a formatted invoice.
-4. **Menu** — add/remove menu items and categories.
-5. **Inventory** — track stock; rows highlighted red are at/below their reorder level; use **Restock Selected** to add quantity.
-6. **Analytics** — revenue today/total, 7-day revenue bar chart, and a pie chart of top-selling items (populates as you generate paid bills).
+# 📖 How to Use It
 
-## Notes / Possible Extensions
+### 🍽️ Tables
 
-- Tax rate is currently a flat 5%, set in `BillingService.TAX_RATE`.
-- To reset all data, just delete `restaurant.db` and restart — it'll be recreated and reseeded.
-- Ideas to extend further for your resume project: login/roles (admin vs waiter), kitchen order tickets (KOT) printing, item-level inventory deduction on order, monthly analytics view, dark mode toggle.
+- Add new tables.
+- Click a table tile to toggle between **Free** and **Reserved** status.
+
+---
+
+### 📝 Orders
+
+- Select a table from the dropdown.
+- An order is automatically created.
+- Add menu items with quantities.
+- Click **Generate Bill**.
+
+---
+
+### 💳 Billing
+
+- View generated bills.
+- Mark bills as **Paid**.
+- Automatically free occupied tables.
+- Generate professional **PDF invoices**.
+
+---
+
+### 🍔 Menu
+
+- Add menu items.
+- Remove menu items.
+- Manage food categories.
+
+---
+
+### 📦 Inventory
+
+- Monitor stock availability.
+- Low-stock items are highlighted in **red**.
+- Restock inventory using **Restock Selected**.
+
+---
+
+### 📊 Analytics
+
+Track restaurant performance through:
+
+- Today's Revenue
+- Total Revenue
+- 7-Day Revenue Bar Chart
+- Top-Selling Items Pie Chart
+
+Charts update automatically as paid bills are generated.
+
+---
+
+# 🔮 Notes / Possible Extensions
+
+- Tax rate is currently **5%**, configurable in:
+
+```java
+BillingService.TAX_RATE
+```
+
+- To reset the application data:
+
+Delete the database file:
+
+```
+restaurant.db
+```
+
+Restart the application and it will automatically recreate and reseed the database.
+
+### Future Improvements
+
+- 👤 User Authentication (Admin / Waiter)
+- 🍳 Kitchen Order Ticket (KOT) Printing
+- 📦 Automatic Inventory Deduction
+- 📅 Monthly Sales Analytics
+- 🌙 Dark Mode Support
+
+---
+
+## 👩‍💻 Author
+
+**Shreya Berlikar**
+
+- GitHub: https://github.com/shreyaberlikar
+- LinkedIn: https://linkedin.com/in/shreya-berlikar
+
+---
+
+## 📄 License
+
+This project is developed for **educational and learning purposes**.
+
+---
+
+⭐ If you found this project useful, consider giving it a **Star** on GitHub!
